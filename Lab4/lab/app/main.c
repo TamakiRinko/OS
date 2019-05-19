@@ -4,7 +4,7 @@
 int data = 0;
 
 int uEntry(void) {
-    
+    /*
     int i = 4;
     int ret = 0;
     sem_t sem;
@@ -43,7 +43,28 @@ int uEntry(void) {
         printf("Father Process: Semaphore Destroying.\n");
         sem_destroy(&sem);
         exit();
-    }
+    }*/
     
+    int ret;
+    int i;
+    //int p;
+    printf("ppid = %d\n", getpid());
+    //scanf("%x", &p);
+    //while(1);
+    for(i = 0; i < 6; ++i){
+        ret = fork();
+        //printf("i = %d, ret = %d\n", i, ret);
+        //canf("%d", &p);
+        if(ret == -1){
+            printf("error!\n");
+            return 0;
+        }
+        if(ret == 0){
+            break;
+        }
+        printf("i = %d, pid = %d\n", i, ret);
+    }
+    while(1);
+
     return 0;
 }
